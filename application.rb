@@ -25,7 +25,7 @@ def populate_employee_logins
   @employees ||= ['herp', 'derp']
 end
 
-def get_existing_card(board, pull_request_url)
+def get_existing_trello_card(board, pull_request_url)
   board = get_board
   existing = board.cards.detect do |card|
     card.attributes[:desc] =~ /#{pull_request_url}/
@@ -40,7 +40,8 @@ def create_trello_card(board, list, data)
                 "Link: #{data["pull_request"]["html_url"]}\n"\
                 "Created: #{data["pull_request"]["created_at"]}"\
 
-  existing = get_existing_card(board, data["pull_request"]["html_url"])
+  existing = get_existing_trello_card(board, data["pull_request"]["html_url"])
+  card = nil
 
   if !existing
     card = Trello::Card.create(
@@ -90,14 +91,14 @@ post '/payload' do
   elsif action == "created"
     # Comments: If written by non-employee, move card to "waiting on us"
     if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
-      existing = get_existing_card(board, get_pull_request_url(data))
+      existing = get_existing_trello_card(board, get_pull_request_url(data))
       move_trello_card(existing, @waiting_on_us_list) if existing
       add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
     end
   elsif action == "edited"
     # The PR was edited with a title change. Update its trello card.
     if !pull_request_updated_by_employee?(data["pull_request"]["user"]["login"])
-      existing = get_existing_card(board, get_pull_request_url(data))
+      existing = get_existing_trello_card(board, get_pull_request_url(data))
       if existing
         # Note: due to a bug in ruby-trello (https://github.com/jeremytregunna/ruby-trello/issues/152), we can't
         # update the fields of a card. To work around this, we archive the old card and create a new one :(
@@ -108,12 +109,12 @@ post '/payload' do
     end
   elsif action == "synchronize"
     # The PR was force pushed to
-      existing = get_existing_card(board, get_pull_request_url(data))
+      existing = get_existing_trello_card(board, get_pull_request_url(data))
       move_trello_card(existing, @waiting_on_us_list) if existing
       add_comment_to_trello_card(existing, "Update: force push by #{data["pull_request"]["user"]["login"]}")
   elsif action == "closed" # TODO: merged?
     # Closed PR. Archive trello card.
-    existing = get_existing_card(board, get_pull_request_url(data))
+    existing = get_existing_trello_card(board, get_pull_request_url(data))
     add_comment_to_trello_card(existing, "Pull request closed by #{data["pull_request"]["user"]["login"]}")
     archive_trello_card(existing) if existing
   end
