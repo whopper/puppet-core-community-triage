@@ -9,7 +9,7 @@ end
 
 def get_board
   @me ||= Trello::Member.find(ENV['TRELLO_USER'])
-  @board ||= Trello::Board.find("5759a368ea02d5f1ca319977")
+  @board ||= Trello::Board.find(ENV['TRELLO_BOARD_ID'])
   @board
 end
 
@@ -25,21 +25,57 @@ def populate_employee_logins
   @employees ||= ['herp', 'derp']
 end
 
-def get_existing_card(title, board)
+def get_existing_card(board, pull_request_url)
   board = get_board
   existing = board.cards.detect do |card|
-    card.attributes[:name] == title
+    card.attributes[:desc] =~ /#{pull_request_url}/
   end
 
   existing
 end
 
-get '/' do
-  "hello world, GET"
+def create_trello_card(board, list, data)
+  description = "#{data["pull_request"]["body"]}\n\n"\
+                "Opened by: #{data["pull_request"]["user"]["login"]}\n"\
+                "Link: #{data["pull_request"]["html_url"]}\n"\
+                "Created: #{data["pull_request"]["created_at"]}"\
+
+  existing = get_existing_card(board, data["pull_request"]["html_url"])
+
+  if !existing
+    card = Trello::Card.create(
+      name: data["pull_request"]["title"],
+      desc: description,
+      list_id: list.attributes[:id],
+    )
+  end
+
+  card
 end
 
-post '/' do
-  "hello world, POST"
+def move_trello_card(card, list)
+  card.move_to_list(list.attributes[:id])
+end
+
+def archive_trello_card(card)
+  card.close!
+end
+
+def add_comment_to_trello_card(card, comment)
+  card.add_comment(comment)
+end
+
+def pull_request_updated_by_employee?(user)
+  populate_employee_logins
+  @employees.include?(user) ? true : false
+end
+
+def get_pull_request_url(data)
+  if data["pull_request"]
+    data["pull_request"]["html_url"]
+  else
+    data["issue"]["html_url"]
+  end
 end
 
 post '/payload' do
@@ -47,40 +83,38 @@ post '/payload' do
   board = get_board
   populate_lists
 
-  if data["action"] == "opened" || data["action"] == "reopened"
-    # new PR or reopened PR: add trello card to "open Pull Requests"
-    description = "#{data["pull_request"]["body"]}\n\nOpened by: #{data["pull_request"]["user"]["login"]}\nCreated: #{data["pull_request"]["created_at"]}"
-
-    existing = get_existing_card(data["pull_request"]["title"], board)
-
-    if !existing
-      card = Trello::Card.create(
-        name: data["pull_request"]["title"],
-        desc: description,
-        list_id: @open_pr_list.attributes[:id],
-      )
+  action = data["action"]
+  if action == "opened" || action == "reopened"
+    # New PR or reopened PR: add trello card to "open Pull Requests"
+    create_trello_card(board, @open_pr_list, data)
+  elsif action == "created"
+    # Comments: If written by non-employee, move card to "waiting on us"
+    if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
+      existing = get_existing_card(board, get_pull_request_url(data))
+      move_trello_card(existing, @waiting_on_us_list) if existing
+      add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
     end
-
-  elsif data["action"] == "created"
-    # If non-employee commented, move card to "waiting on us"
-    populate_employee_logins
-    user = data["comment"]["user"]["login"]
-    if data["pull_request"]
-      title = data["pull_request"]["title"]
-    else
-      title = data["issue"]["title"]
-    end
-
-    if !@employees.include?(user)
-      existing = get_existing_card(title, board)
-
+  elsif action == "edited"
+    # The PR was edited with a title change. Update its trello card.
+    if !pull_request_updated_by_employee?(data["pull_request"]["user"]["login"])
+      existing = get_existing_card(board, get_pull_request_url(data))
       if existing
-        existing.move_to_list(@waiting_on_us_list.attributes[:id])
+        # Note: due to a bug in ruby-trello (https://github.com/jeremytregunna/ruby-trello/issues/152), we can't
+        # update the fields of a card. To work around this, we archive the old card and create a new one :(
+        archive_trello_card(existing)
+        new_card = create_trello_card(board, @waiting_on_us_list, data)
+        add_comment_to_trello_card(new_card, "Update: Pull request title updated by #{data["pull_request"]["user"]["login"]}")
       end
     end
-  elsif data["action"] == "closed" # TODO: merged?
+  elsif action == "synchronize"
+    # The PR was force pushed to
+      existing = get_existing_card(board, get_pull_request_url(data))
+      move_trello_card(existing, @waiting_on_us_list) if existing
+      add_comment_to_trello_card(existing, "Update: force push by #{data["pull_request"]["user"]["login"]}")
+  elsif action == "closed" # TODO: merged?
     # Closed PR. Archive trello card.
-    existing = get_existing_card(data["pull_request"]["title"], board)
-    existing.close! if existing
+    existing = get_existing_card(board, get_pull_request_url(data))
+    add_comment_to_trello_card(existing, "Pull request closed by #{data["pull_request"]["user"]["login"]}")
+    archive_trello_card(existing) if existing
   end
 end
