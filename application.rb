@@ -22,7 +22,9 @@ def populate_lists
 end
 
 def populate_employee_logins
-  @employees ||= ['herp', 'derp']
+  @employees ||= ['whopper', 'HAIL9000', 'branan', 'Magisus', 'kylog', 'seangriff',
+                  'Iristyle', 'er0ck', 'ferventcoder', 'johnduarte', 'thallgren',
+                  'joshcooper', 'hlindberg', 'peterhuene', 'MikaelSmith']
 end
 
 def get_existing_trello_card(board, pull_request_url)
