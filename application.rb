@@ -22,7 +22,7 @@ def populate_lists
 end
 
 def populate_employee_logins
-  @employees ||= ['whopper', 'HAIL9000', 'branan', 'Magisus', 'kylog', 'seangriff',
+  @employees ||= ['HAIL9000', 'branan', 'Magisus', 'kylog', 'seangriff',
                   'Iristyle', 'er0ck', 'ferventcoder', 'johnduarte', 'thallgren',
                   'joshcooper', 'hlindberg', 'peterhuene', 'MikaelSmith']
 end
@@ -89,10 +89,12 @@ post '/payload' do
   action = data["action"]
   if action == "opened" || action == "reopened"
     # New PR or reopened PR: add trello card to "open Pull Requests"
-    create_trello_card(board, @open_pr_list, data)
+    if !pull_request_updated_by_employee?(data["pull_request"]["user"]["login"])
+      create_trello_card(board, @open_pr_list, data)
+    end
   elsif action == "created"
     # Comments: If written by non-employee, move card to "waiting on us"
-    if !pull_request_updated_by_employee?(data["pull_request"]["user"]["login"])
+    if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       move_trello_card(existing, @waiting_on_us_list) if existing
       add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
@@ -109,15 +111,31 @@ post '/payload' do
         add_comment_to_trello_card(new_card, "Update: Pull request title updated by #{data["pull_request"]["user"]["login"]}")
       end
     end
+  elsif action == "labeled"
+      existing = get_existing_trello_card(board, get_pull_request_url(data))
+      if existing
+        case data["label"]["name"]
+        when 'Triaged', 'Merge After Unfreeze'
+          move_trello_card(existing, @waiting_on_us_list)
+        when 'Waiting on Contributor'
+          move_trello_card(existing, @waiting_on_contributor_list)
+        when 'Blocked'
+          move_trello_card(existing, @waiting_on_deep_dive_list)
+        end
+      end
   elsif action == "synchronize"
     # The PR was force pushed to
       existing = get_existing_trello_card(board, get_pull_request_url(data))
-      move_trello_card(existing, @waiting_on_us_list) if existing
-      add_comment_to_trello_card(existing, "Update: force push by #{data["pull_request"]["user"]["login"]}")
+      if existing
+        move_trello_card(existing, @waiting_on_us_list)
+        add_comment_to_trello_card(existing, "Update: force push by #{data["pull_request"]["user"]["login"]}")
+      end
   elsif action == "closed" # TODO: merged?
     # Closed PR. Archive trello card.
     existing = get_existing_trello_card(board, get_pull_request_url(data))
-    add_comment_to_trello_card(existing, "Pull request closed by #{data["pull_request"]["user"]["login"]}")
-    archive_trello_card(existing) if existing
+    if existing
+      add_comment_to_trello_card(existing, "Pull request closed by #{data["pull_request"]["user"]["login"]}")
+      archive_trello_card(existing)
+    end
   end
 end
