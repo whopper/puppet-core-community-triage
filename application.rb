@@ -92,14 +92,14 @@ post '/payload' do
     create_trello_card(board, @open_pr_list, data)
   elsif action == "created"
     # Comments: If written by non-employee, move card to "waiting on us"
-    if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
+    if !pull_request_updated_by_employee?(data["pull_request"]["user"]["login"])
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       move_trello_card(existing, @waiting_on_us_list) if existing
       add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
     end
   elsif action == "edited"
     # The PR was edited with a title change. Update its trello card.
-    if !pull_request_updated_by_employee?(data["pull_request"]["user"]["login"])
+    if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       if existing
         # Note: due to a bug in ruby-trello (https://github.com/jeremytregunna/ruby-trello/issues/152), we can't
