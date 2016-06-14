@@ -150,8 +150,10 @@ post '/payload' do
     # Comments: If written by non-employee, move card to "waiting on us"
     if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
       existing = get_existing_trello_card(board, get_pull_request_url(data))
-      move_trello_card(existing, @waiting_on_us_list) if existing
-      add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
+      if existing
+        move_trello_card(existing, @waiting_on_us_list) if existing.list_id != @open_pr_list.id
+        add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
+      end
     end
   elsif action == "edited"
     # The PR was edited with a title change. Update its trello card.
