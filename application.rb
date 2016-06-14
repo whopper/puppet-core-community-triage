@@ -7,12 +7,22 @@ Trello.configure do |config|
   config.member_token = ENV['MEMBER_TOKEN']
 end
 
+##
+# Method: get_board
+# @params: None
+# @returns: board, an instance of Trello::Board representing the community PR board
+# Populates and cached the Trello board in the @board instance variable, and returns it
 def get_board
   @me ||= Trello::Member.find(ENV['TRELLO_USER'])
   @board ||= Trello::Board.find(ENV['TRELLO_BOARD_ID'])
   @board
 end
 
+##
+# Method: populate_lists
+# @params: None
+# @returns: None
+# Populates and caches Trello lists acquired from the board
 def populate_lists
   board = get_board
   @open_pr_list ||= board.lists[0]
@@ -21,12 +31,22 @@ def populate_lists
   @waiting_on_deep_dive_list ||= board.lists[3]
 end
 
+##
+# Method: populate_employee_logins
+# @params: None
+# @returns: none
+# Populates and caches current core developer GitHub usernames in the @employees list
 def populate_employee_logins
   @employees ||= ['whopper', 'HAIL9000', 'branan', 'Magisus', 'kylog', 'seangriff',
                   'Iristyle', 'er0ck', 'ferventcoder', 'johnduarte', 'thallgren',
                   'joshcooper', 'hlindberg', 'peterhuene', 'MikaelSmith']
 end
 
+##
+# Method: get_existing_trello_card
+# @params: board [Trello::Board] the board instance to use
+#          pull_request_url [String] the URL of the pull request to search for on the board
+# Searches a board for a specific pull request by checking for its URL in the card description
 def get_existing_trello_card(board, pull_request_url)
   board = get_board
   existing = board.cards.detect do |card|
@@ -36,6 +56,13 @@ def get_existing_trello_card(board, pull_request_url)
   existing
 end
 
+##
+# Method: create_trell_card
+# @params: board [Trello::Board] the board instance to use
+#          list [Trello::List] the list instance that the card should be placed into
+#          data [Hash] the JSON blob acquired from the GitHub webhook payload
+# @returns: card [Trello:Card] an object representing the Trello card which was created
+# Creates a new Trello card in the specified list using the standard format
 def create_trello_card(board, list, data)
   description = "#{data["pull_request"]["body"]}\n\n"\
                 "Opened by: #{data["pull_request"]["user"]["login"]}\n"\
@@ -56,23 +83,49 @@ def create_trello_card(board, list, data)
   card
 end
 
+##
+# Method: move_trello_card
+# @params: card [Trello::Card] the card to be moved
+#          list [Trello::List] the list which the card should be moved into
+# @returns: None
+# Moves the specified trello card into the specified list using the ruby_trello API
 def move_trello_card(card, list)
   card.move_to_list(list.attributes[:id])
 end
 
+##
+# Method: archive_trello_card
+# @params: card [Trello::Card] the card to be archived
+# @returns: None
+# Archives the specified Trello card
 def archive_trello_card(card)
   card.close!
 end
 
+##
+# Method: add_comment_to_trello_card
+# @params: card [Trello::Card] the card to add a comment to
+#          comment [String] the text of the comment
+# @returns: None
+# Adds a new comment to the specified card containing the specified text
 def add_comment_to_trello_card(card, comment)
   card.add_comment(comment)
 end
 
+# Method: pull_request_updated_by_employee?
+# @params: user [String] the GitHub username to check
+# @returns: [Bool] true if the specified user is in the employee list, false otherwise
+# Checks if the specified user is considered an employee.
 def pull_request_updated_by_employee?(user)
   populate_employee_logins
   @employees.include?(user) ? true : false
 end
 
+##
+# Method: get_pull_request_url
+# @params: data [Hash] The JSON blob acquired via the GitHub webhook payload
+# @returns: URL [String] the URL of the pull request which was edited
+# Gets the HTML URL of the pull request which was edited or changed in some way
 def get_pull_request_url(data)
   if data["pull_request"]
     data["pull_request"]["html_url"]
