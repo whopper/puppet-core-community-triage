@@ -21,3 +21,15 @@ Generally, actions should be taken on the pull requests themselves on GitHub whi
 **Waiting on Deep Dive**
 * Pull requests in this list require additional core developer investigation and possibly design discussion. Often, seeking expert knowledge of specific areas of the code base is also required.
 * Cards are generally manually moved into this list upon associated pull request review, but are also automatically moved when the "Blocked" label is added to the pull request on GitHub.
+
+#### Running ####
+
+Currently, this application runs through Heroku. It's URL is puppet-core-community-triage.herokuapp.com, and is owned by me.
+
+If setting up under a new Heroku instance, the following config variables need to be set, using keys from the internal Puppet `clientbot1` Trello user:
+* TRELLO_BOARD_ID : 5759a368ea02d5f1ca319977
+* TRELLO_USER : clientbot1
+* MEMBER_TOKEN : Internally accessed via the Trello API
+* PUBLIC_KEY: Internally accessed via the Trello API
+
+With these all set, the Client Bot Trello user will carry out the Trello card actions.
