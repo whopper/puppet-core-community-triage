@@ -40,7 +40,9 @@ def populate_employee_logins
   @employees ||= ['whopper', 'HAIL9000', 'branan', 'Magisus', 'kylog', 'seangriff',
                   'Iristyle', 'er0ck', 'ferventcoder', 'johnduarte', 'thallgren',
                   'joshcooper', 'hlindberg', 'peterhuene', 'MikaelSmith',
-                  'puppetcla', 'melissa', 'underscorgan', 'shrug', 'geoffnichols']
+                  'puppetcla', 'melissa', 'underscorgan', 'shrug', 'geoffnichols',
+                  'justinstoller', 'cprice404', 'KevinCorcoran', 'rlinehan',
+                  'nathanielksmith', 'gguillotte', 'nfagerlund', 'jtappa']
 end
 
 ##
