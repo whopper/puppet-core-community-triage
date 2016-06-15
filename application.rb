@@ -151,7 +151,7 @@ post '/payload' do
     if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       if existing
-        move_trello_card(existing, @waiting_on_us_list) if existing.list_id != @open_pr_list.id
+        move_trello_card(existing, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
         add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
       end
     end
@@ -183,7 +183,7 @@ post '/payload' do
     # The PR was force pushed to
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       if existing
-        move_trello_card(existing, @waiting_on_us_list)
+        move_trello_card(existing, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
         add_comment_to_trello_card(existing, "Update: force push by #{data["pull_request"]["user"]["login"]}")
       end
   elsif action == "closed" # TODO: merged?
