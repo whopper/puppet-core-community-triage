@@ -192,7 +192,7 @@ post '/payload' do
     # Closed PR. Archive trello card.
     existing = get_existing_trello_card(board, get_pull_request_url(data))
     if existing
-      add_comment_to_trello_card(existing, "Pull request closed by #{data["pull_request"]["user"]["login"]}")
+      add_comment_to_trello_card(existing, "Pull request closed by #{data["sender"]["login"]}")
       archive_trello_card(existing)
     end
   end
