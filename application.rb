@@ -42,7 +42,8 @@ def populate_employee_logins
                   'joshcooper', 'hlindberg', 'peterhuene', 'MikaelSmith',
                   'puppetcla', 'melissa', 'underscorgan', 'shrug', 'geoffnichols',
                   'justinstoller', 'cprice404', 'KevinCorcoran', 'rlinehan',
-                  'nathanielksmith', 'gguillotte', 'nfagerlund', 'jtappa']
+                  'nathanielksmith', 'gguillotte', 'nfagerlund', 'jtappa',
+                  'McdonaldSeanp']
 end
 
 ##
