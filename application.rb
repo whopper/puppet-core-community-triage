@@ -43,7 +43,8 @@ def populate_employee_logins
                   'puppetcla', 'melissa', 'underscorgan', 'shrug', 'geoffnichols',
                   'justinstoller', 'cprice404', 'KevinCorcoran', 'rlinehan',
                   'nathanielksmith', 'gguillotte', 'nfagerlund', 'jtappa',
-                  'McdonaldSeanp', 'ahenroid', 'glennsarti', 'adrienthebo']
+                  'McdonaldSeanp', 'ahenroid', 'glennsarti', 'adrienthebo',
+                  'kbarber']
 end
 
 ##
