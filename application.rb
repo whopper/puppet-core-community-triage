@@ -44,7 +44,7 @@ def populate_employee_logins
                   'justinstoller', 'cprice404', 'KevinCorcoran', 'rlinehan',
                   'nathanielksmith', 'gguillotte', 'nfagerlund', 'jtappa',
                   'McdonaldSeanp', 'ahenroid', 'glennsarti', 'adrienthebo',
-                  'kbarber', 'nicklewis', 'shermdog']
+                  'kbarber', 'nicklewis', 'shermdog', 'MosesMendoza', 'adreyer']
 end
 
 ##
