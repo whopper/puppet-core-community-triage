@@ -223,6 +223,8 @@ post '/payload' do
         list = @waiting_on_contributor_list
       when 'Blocked'
         list = @waiting_on_deep_dive_list
+      else
+        list = @open_pr_list
       end
 
       if existing
