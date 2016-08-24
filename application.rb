@@ -70,17 +70,17 @@ end
 # @returns: card [Trello:Card] an object representing the Trello card which was created
 # Creates a new Trello card in the specified list using the standard format
 def create_trello_card(board, list, data)
-  description = "#{data["pull_request"]["body"]}\n\n"\
-                "Opened by: #{data["pull_request"]["user"]["login"]}\n"\
-                "Link: #{data["pull_request"]["html_url"]}\n"\
-                "Created: #{data["pull_request"]["created_at"]}"\
+  description = "#{get_pull_request_body(data)}\n\n"\
+                "Opened by: #{get_user_login(data)}\n"\
+                "Link: #{get_pull_request_url(data)}\n"\
+                "Created: #{get_pull_request_created(data)}"\
 
-  existing = get_existing_trello_card(board, data["pull_request"]["html_url"])
+  existing = get_existing_trello_card(board, get_pull_request_url(data))
   card = nil
 
   if !existing
     card = Trello::Card.create(
-      name: data["pull_request"]["title"],
+      name: get_pull_request_title(data),
       desc: description,
       list_id: list.attributes[:id],
     )
@@ -140,6 +140,11 @@ def get_pull_request_url(data)
   end
 end
 
+##
+# Method: get_user_login
+# @params: data [Hash] The JSON blob acquired via the GitHub webhook payload
+# @returns: login [String] the login of the user who send the payload
+# Gets the user who sent the payload
 def get_user_login(data)
   if data["sender"]["login"]
     data["sender"]["login"]
@@ -169,6 +174,51 @@ def is_valid_payload?(request)
     end
   else
     true
+  end
+end
+
+##
+# Method: get_pull_request_body
+# @params: data [Hash] The JSON blob acquired via the GitHub webhook payload
+# @returns: body [String] the body of the pull request which was edited
+# Gets the body of the pull request which was edited or changed in some way
+def get_pull_request_body(data)
+  if data["pull_request"]
+    data["pull_request"]["body"]
+  elsif data["issue"]
+    data["issue"]["body"]
+  else
+    'Unknown PR Contents'
+  end
+end
+
+##
+# Method: get_pull_request_created
+# @params: data [Hash] The JSON blob acquired via the GitHub webhook payload
+# @returns: time [String] the time when the pull request was created
+# Gets the time when the pull request was created
+def get_pull_request_created(data)
+  if data["pull_request"]
+    data["pull_request"]["created"]
+  elsif data["issue"]
+    data["issue"]["created_at"]
+  else
+    'Unknown Created Time'
+  end
+end
+
+##
+# Method: get_pull_request_created
+# @params: data [Hash] The JSON blob acquired via the GitHub webhook payload
+# @returns: title [String] the title of the pull request which was edited
+# Gets the title of the pull request which was edited or changed in some way
+def get_pull_request_title(data)
+  if data["pull_request"]
+    data["pull_request"]["title"]
+  elsif data["issue"]
+    data["issue"]["title"]
+  else
+    'Unknown Title'
   end
 end
 
