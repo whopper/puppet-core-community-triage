@@ -192,11 +192,14 @@ post '/payload' do
   elsif action == "created"
     # Comments: If written by non-employee, move card to "waiting on us"
     if !pull_request_updated_by_employee?(user)
-      existing = get_existing_trello_card(board, get_pull_request_url(data))
-      if existing
-        move_trello_card(existing, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
-        add_comment_to_trello_card(existing, "Update: New comment from #{user}: #{data["comment"]["html_url"]}")
+      card = get_existing_trello_card(board, get_pull_request_url(data))
+      if card
+        move_trello_card(card, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
+      else
+        card = create_trello_card(board, @waiting_on_us_list, data)
       end
+
+      add_comment_to_trello_card(card, "Update: New comment from #{user}: #{data["comment"]["html_url"]}")
     end
   elsif action == "edited"
     # The PR was edited with a title change. Update its trello card.
@@ -206,29 +209,37 @@ post '/payload' do
         # Note: due to a bug in ruby-trello (https://github.com/jeremytregunna/ruby-trello/issues/152), we can't
         # update the fields of a card. To work around this, we archive the old card and create a new one :(
         archive_trello_card(existing)
-        new_card = create_trello_card(board, @waiting_on_us_list, data)
-        add_comment_to_trello_card(new_card, "Update: Pull request title updated by #{user}")
       end
+
+      new_card = create_trello_card(board, @waiting_on_us_list, data)
+      add_comment_to_trello_card(new_card, "Update: Pull request title updated by #{user}")
     end
   elsif action == "labeled"
       existing = get_existing_trello_card(board, get_pull_request_url(data))
+      case data["label"]["name"]
+      when 'Triaged', 'Merge After Unfreeze'
+        list = @waiting_on_us_list
+      when 'Waiting on Contributor'
+        list = @waiting_on_contributor_list
+      when 'Blocked'
+        list = @waiting_on_deep_dive_list
+      end
+
       if existing
-        case data["label"]["name"]
-        when 'Triaged', 'Merge After Unfreeze'
-          move_trello_card(existing, @waiting_on_us_list)
-        when 'Waiting on Contributor'
-          move_trello_card(existing, @waiting_on_contributor_list)
-        when 'Blocked'
-          move_trello_card(existing, @waiting_on_deep_dive_list)
-        end
+        move_trello_card(existing, list)
+      else
+        create_trello_card(board, list, data)
       end
   elsif action == "synchronize"
     # The PR was force pushed to
-      existing = get_existing_trello_card(board, get_pull_request_url(data))
-      if existing
+      card = get_existing_trello_card(board, get_pull_request_url(data))
+      if card
         move_trello_card(existing, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
-        add_comment_to_trello_card(existing, "Update: force push by #{user}")
+      else
+        card = create_trello_card(board, @waiting_on_us_list, data)
       end
+
+      add_comment_to_trello_card(card, "Update: force push by #{user}")
   elsif action == "closed" # TODO: merged?
     # Closed PR. Archive trello card.
     existing = get_existing_trello_card(board, get_pull_request_url(data))
