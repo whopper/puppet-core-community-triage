@@ -1,3 +1,4 @@
+require 'openssl'
 require 'sinatra'
 require 'trello'
 require 'json'
@@ -151,7 +152,31 @@ def get_user_login(data)
   end
 end
 
+def is_valid_payload?(request)
+  hook_secret = ENV['GITHUB_HOOK_SECRET']
+  hub_signature = request.env['HTTP_X_HUB_SIGNATURE']
+  body = request.body.read
+  request.body.rewind
+
+  if hook_secret
+    if hub_signature
+      header_sum_type, header_hmac = hub_signature.split('=')
+      digest = OpenSSL::Digest.new(header_sum_type)
+      hmac = OpenSSL::HMAC.hexdigest(digest, hook_secret, body)
+      hmac == header_hmac
+    else
+      false
+    end
+  else
+    true
+  end
+end
+
 post '/payload' do
+  unless is_valid_payload?(request)
+    halt(401, 'Invalid payload')
+  end
+
   data = JSON.parse(request.body.read)
   board = get_board
   populate_lists
