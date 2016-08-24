@@ -139,36 +139,50 @@ def get_pull_request_url(data)
   end
 end
 
+def get_user_login(data)
+  if data["sender"]["login"]
+    data["sender"]["login"]
+  elsif data["comment"]["user"]["login"]
+    data["comment"]["user"]["login"]
+  elsif data["pull_request"]
+    data["pull_request"]["user"]["login"]
+  else
+    'Unknown User'
+  end
+end
+
 post '/payload' do
   data = JSON.parse(request.body.read)
   board = get_board
   populate_lists
 
   action = data["action"]
+  user = get_user_login(data)
+
   if action == "opened" || action == "reopened"
     # New PR or reopened PR: add trello card to "open Pull Requests"
-    if !pull_request_updated_by_employee?(data["pull_request"]["user"]["login"])
+    if !pull_request_updated_by_employee?(user)
       create_trello_card(board, @open_pr_list, data)
     end
   elsif action == "created"
     # Comments: If written by non-employee, move card to "waiting on us"
-    if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
+    if !pull_request_updated_by_employee?(user)
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       if existing
         move_trello_card(existing, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
-        add_comment_to_trello_card(existing, "Update: New comment from #{data["comment"]["user"]["login"]}: #{data["comment"]["html_url"]}")
+        add_comment_to_trello_card(existing, "Update: New comment from #{user}: #{data["comment"]["html_url"]}")
       end
     end
   elsif action == "edited"
     # The PR was edited with a title change. Update its trello card.
-    if !pull_request_updated_by_employee?(data["comment"]["user"]["login"])
+    if !pull_request_updated_by_employee?(user)
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       if existing
         # Note: due to a bug in ruby-trello (https://github.com/jeremytregunna/ruby-trello/issues/152), we can't
         # update the fields of a card. To work around this, we archive the old card and create a new one :(
         archive_trello_card(existing)
         new_card = create_trello_card(board, @waiting_on_us_list, data)
-        add_comment_to_trello_card(new_card, "Update: Pull request title updated by #{data["pull_request"]["user"]["login"]}")
+        add_comment_to_trello_card(new_card, "Update: Pull request title updated by #{user}")
       end
     end
   elsif action == "labeled"
@@ -188,13 +202,13 @@ post '/payload' do
       existing = get_existing_trello_card(board, get_pull_request_url(data))
       if existing
         move_trello_card(existing, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
-        add_comment_to_trello_card(existing, "Update: force push by #{data["pull_request"]["user"]["login"]}")
+        add_comment_to_trello_card(existing, "Update: force push by #{user}")
       end
   elsif action == "closed" # TODO: merged?
     # Closed PR. Archive trello card.
     existing = get_existing_trello_card(board, get_pull_request_url(data))
     if existing
-      add_comment_to_trello_card(existing, "Pull request closed by #{data["sender"]["login"]}")
+      add_comment_to_trello_card(existing, "Pull request closed by #{user}")
       archive_trello_card(existing)
     end
   end
