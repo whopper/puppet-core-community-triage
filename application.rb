@@ -199,3 +199,7 @@ post '/payload' do
     end
   end
 end
+
+get '/' do
+  'OK'
+end
