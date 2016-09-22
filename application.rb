@@ -1,7 +1,11 @@
 require 'openssl'
 require 'sinatra'
+require "sinatra/config_file"
 require 'trello'
 require 'json'
+
+CONFIG_PATH = ENV['CONFIG_PATH'] || 'config.yml'
+config_file(CONFIG_PATH)
 
 Trello.configure do |config|
   config.developer_public_key = ENV['PUBLIC_KEY']
@@ -38,15 +42,11 @@ end
 # @returns: none
 # Populates and caches current core developer GitHub usernames in the @employees list
 def populate_employee_logins
-  @employees ||= ['whopper', 'HAIL9000', 'branan', 'Magisus', 'kylog', 'seangriff',
-                  'Iristyle', 'er0ck', 'ferventcoder', 'johnduarte', 'thallgren',
-                  'joshcooper', 'hlindberg', 'peterhuene', 'MikaelSmith',
-                  'puppetcla', 'melissa', 'underscorgan', 'shrug', 'geoffnichols',
-                  'justinstoller', 'cprice404', 'KevinCorcoran', 'rlinehan',
-                  'nathanielksmith', 'gguillotte', 'nfagerlund', 'jtappa',
-                  'McdonaldSeanp', 'ahenroid', 'glennsarti', 'adrienthebo',
-                  'kbarber', 'nicklewis', 'shermdog', 'MosesMendoza', 'adreyer',
-                  'phongdly']
+  if settings.employees
+    @employees ||= settings.employees
+  else
+    @employees ||= []
+  end
 end
 
 ##
@@ -304,5 +304,5 @@ post '/payload' do
 end
 
 get '/' do
-  'OK'
+  "OK"
 end
