@@ -245,7 +245,7 @@ post '/payload' do
     if !pull_request_updated_by_employee?(user)
       card = get_existing_trello_card(board, get_pull_request_url(data))
       if card
-        move_trello_card(card, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
+        move_trello_card(card, @waiting_on_us_list) if (card.list_id != @open_pr_list.id && card.list_id != @waiting_on_deep_dive_list.id)
       else
         card = create_trello_card(board, @waiting_on_us_list, data)
       end
@@ -287,7 +287,7 @@ post '/payload' do
     # The PR was force pushed to
       card = get_existing_trello_card(board, get_pull_request_url(data))
       if card
-        move_trello_card(existing, @waiting_on_us_list) if (existing.list_id != @open_pr_list.id && existing.list_id != @waiting_on_deep_dive_list.id)
+        move_trello_card(card, @waiting_on_us_list) if (card.list_id != @open_pr_list.id && card.list_id != @waiting_on_deep_dive_list.id)
       else
         card = create_trello_card(board, @waiting_on_us_list, data)
       end
