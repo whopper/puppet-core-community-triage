@@ -1,0 +1,1316 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.trello.com/1/members/clippy6?key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=f40d2234fde7f15260ca7885d75da95d9a9ecd4bb0fe382a6031078a7a57d95c; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:53 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260973087'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      X-Trello-Index-Last-Update:
+      - '3'
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '819'
+      Etag:
+      - W/"333-e90d9388"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 18:42:53 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"57ed93f4548fc9bb568c2e01","avatarHash":"4fc0c1609c0c48b0950d8ab7747ce50d","bio":"","bioData":null,"confirmed":false,"fullName":"Clippy","idPremOrgsAdmin":[],"initials":"C","memberType":"normal","products":[],"status":"disconnected","url":"https://trello.com/clippy6","username":"clippy6","avatarSource":"upload","email":"brandon.high+clippy@puppet.com","gravatarHash":"b800eefce8f9a0199575c17e641cf930","idBoards":["57ed93f4548fc9bb568c2e02","57ed940eec8df927ab3ca130"],"idEnterprise":null,"idOrganizations":[],"loginTypes":["password"],"oneTimeMessagesDismissed":[],"prefs":{"sendSummaries":true,"minutesBetweenSummaries":1,"minutesBeforeDeadlineToNotify":1440,"colorBlind":false,"locale":"en-US"},"trophies":[],"uploadedAvatarHash":"4fc0c1609c0c48b0950d8ab7747ce50d","premiumFeatures":[],"idBoardsPinned":null}'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:53 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130?key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=6e66b6e55a0c83af7e476a9f32812d2296c5334e0066c8ee71a453ecd3942087; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:53 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260973613'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      X-Trello-Index-Last-Update:
+      - '20'
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '757'
+      Etag:
+      - W/"2f5-da2e13e2"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 18:42:53 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"57ed940eec8df927ab3ca130","name":"Test Board","desc":"","descData":null,"closed":false,"idOrganization":null,"pinned":false,"url":"https://trello.com/b/j9F220DB/test-board","shortUrl":"https://trello.com/b/j9F220DB","prefs":{"permissionLevel":"private","voting":"disabled","comments":"members","invitations":"members","selfJoin":false,"cardCovers":true,"cardAging":"regular","calendarFeedEnabled":false,"background":"blue","backgroundImage":null,"backgroundImageScaled":null,"backgroundTile":false,"backgroundBrightness":"dark","backgroundColor":"#0079BF","canBePublic":true,"canBeOrg":true,"canBePrivate":true,"canInvite":true},"labelNames":{"green":"","yellow":"","orange":"","red":"","purple":"","blue":"","sky":"","lime":"","pink":"","black":""}}'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:53 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.765.1
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=5c97fff8534686112bb1021f4980e22a4800625829e96c40472ece0911b99e88; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:54 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260974127'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 18:42:54 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:54 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.765.1
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=a1d2b44597518b6d6d9643af04ab7d9f4d0b494ed710e5588fff3b2e553b3a0f; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:54 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260974640'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 18:42:54 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:54 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.765.1
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=95ebffbbea78baf7c2e9c749d41674ff325a994132f4061bfdc1bffece69a696; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:55 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260975154'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 18:42:55 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:55 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.765.1
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=19cad9e3e550527856873de8acdb95352d7a5f2b53629b68796275ff29dedb99; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:55 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260975670'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 18:42:55 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:55 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.765.1
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=749f1c0617de485fe9d930a6bf51d1db3de6d524ed591f2438c4c0cd28151b47; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:56 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260976194'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 18:42:56 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:56 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/cards?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=0909121b07c20289901a924b1dfb6f88cc076833d07c5201469be037d3df4a96; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:56 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260976736'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"67tUbJ7mfvG82ON6dueuYQ=="
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Date:
+      - Fri, 30 Sep 2016 18:42:56 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA+1Uy27bMBD8FVZny3palnVL8yhSOGiRRw+Nc6DIlUVEIgWS
+        spsG+fcuZTsRiqJBgeRWQAdqtbvcmdnR7aMnuFd4szkALdl8tmApD4GnCU/j
+        DGJv4rEa2P25hfbKUgvGK2TfNBhulAEsrWhjYOJx/Lakxh4xKzbCPmDPOIwy
+        P1z4SXgd5UWcFnE+nSez79iTg2GYcV0LQ/ChpNNg7QMxou0aIKymcg3E1tSS
+        LRAJwIlVpMOLiZB4avEm0NOVXMkvHUj8XD4UpKQ/MGprqCm7B72SSyHvC1Jb
+        25kiCNbC1n05ZaoNfssMur5sBPM1dCpwtwTRSh5rQEy8IPt5T6ilB/CCf1RU
+        74njizQEYDmvFvGclgmjURJ6LmkpjD2QO4/SvIIkhpxTHkZhVWZDzgW0JWjz
+        TVnH5u2di13VSmNh5M5H1lJWtyDtsdqAPkzQUtnTZgi9ZDyrgVfTEhqzayhp
+        CzjGTedEQlaBXJ4enVycki0yguxukdRK6ZZaoSQO1SksjLIkTyeecaM4HrHB
+        Kd8uz87OzzGlpHztduHR26hhKcKJtxGwFXK9A7THs5/H9KVhWpSjUKXWZb/+
+        iW3HO7br9PJ67E6uykVV60CagRj6DHpX4hTSohsQFFb3biV72LH1NDo7boam
+        DWpjDoTvRdi9NiPqBvg3usExD2tkNTSNGtaIBSNK/oCxf70wiPx+0MVHXXAB
+        KW/Bd7r4qIs/1uVpMvJqGZYzPqNVUsXVLInDdEGzt/NqkhVJPp0l0cirXy8J
+        U9Ii4aQGDR/ez3uLOH0H92VZxuMFj2L8t81zNo9fc1/8tu775ACRr5d/8VeV
+        pOHnq2v231/PNhlR8m/+OhQGsb92zPud9p7ufgFJcCnG7wYAAA==
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:56 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/cards?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.765.1
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=b1b6668fca846392501441d24a26ee466ffc7c48a6d1f5bffbbc8311c7fc8fde; Path=/;
+        Expires=Mon, 03 Oct 2016 18:42:57 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260977265'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"67tUbJ7mfvG82ON6dueuYQ=="
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Date:
+      - Fri, 30 Sep 2016 18:42:57 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA+1Uy27bMBD8FVZny3palnVL8yhSOGiRRw+Nc6DIlUVEIgWS
+        spsG+fcuZTsRiqJBgeRWQAdqtbvcmdnR7aMnuFd4szkALdl8tmApD4GnCU/j
+        DGJv4rEa2P25hfbKUgvGK2TfNBhulAEsrWhjYOJx/Lakxh4xKzbCPmDPOIwy
+        P1z4SXgd5UWcFnE+nSez79iTg2GYcV0LQ/ChpNNg7QMxou0aIKymcg3E1tSS
+        LRAJwIlVpMOLiZB4avEm0NOVXMkvHUj8XD4UpKQ/MGprqCm7B72SSyHvC1Jb
+        25kiCNbC1n05ZaoNfssMur5sBPM1dCpwtwTRSh5rQEy8IPt5T6ilB/CCf1RU
+        74njizQEYDmvFvGclgmjURJ6LmkpjD2QO4/SvIIkhpxTHkZhVWZDzgW0JWjz
+        TVnH5u2di13VSmNh5M5H1lJWtyDtsdqAPkzQUtnTZgi9ZDyrgVfTEhqzayhp
+        CzjGTedEQlaBXJ4enVycki0yguxukdRK6ZZaoSQO1SksjLIkTyeecaM4HrHB
+        Kd8uz87OzzGlpHztduHR26hhKcKJtxGwFXK9A7THs5/H9KVhWpSjUKXWZb/+
+        iW3HO7br9PJ67E6uykVV60CagRj6DHpX4hTSohsQFFb3biV72LH1NDo7boam
+        DWpjDoTvRdi9NiPqBvg3usExD2tkNTSNGtaIBSNK/oCxf70wiPx+0MVHXXAB
+        KW/Bd7r4qIs/1uVpMvJqGZYzPqNVUsXVLInDdEGzt/NqkhVJPp0l0cirXy8J
+        U9Ii4aQGDR/ez3uLOH0H92VZxuMFj2L8t81zNo9fc1/8tu775ACRr5d/8VeV
+        pOHnq2v231/PNhlR8m/+OhQGsb92zPud9p7ufgFJcCnG7wYAAA==
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:57 GMT
+- request:
+    method: post
+    uri: https://api.trello.com/1/cards?key=d370f9906b4243eed0ed979b6ddb065f&token=<MEMBER_TOKEN>
+    body:
+      encoding: UTF-8
+      string: name=(PE-14182)%20-%20Allow%20for%20multiple%20ActiveMQ%20Hubs.&desc=Please%20read%20the%20steps%20below%20as%20the%20process%20has%20changed.%0D%0A%0D%0A_Notes_%3A%20%0D%0A-%20The%20checkboxes%20can%20be%20checked%20off%20on%20the%20GH%20interface%20as%20you%20complete%20each%20step.%0D%0A-%20We%20cannot%20ensure%20immediate%20turnaround%20on%20the%20reviews.%20Our%20process%20is%20to%0D%0A%20%20review%20all%20the%20outstanding%20PRs%20during%20sprint%20planning%20(%5BSee%20Integration%20Team%0D%0A%20%20Calendar%5D(https%3A%2F%2Fconfluence.puppetlabs.com%2Fdisplay%2FENG%2FIntegration%2BTeam%2BPage))%0D%0A-%20%5C%5Bskip%20ci%5C%5D%20(ignore%20this%20note%2C%20it%20is%20needed%20to%20not%20kick%20off%20PR%20testing%20right%20away)%0D%0A%0D%0APlease%20check%20off%20below%20as%20your%20complete%20each%20step%3A%0D%0A-%20%5Bx%5D%20Please%20put%20the%20Jira%20ticket%20you%20created%20for%20your%20team%20in%20parentheses%20in%20the%20**Title**%20e.g.%20%60(PE-666)%20Add%20Super%20Duper%20Widget%60%0D%0A-%20%5Bx%5D%20To%20help%20us%20expedite%20the%20PR%2C%20please%20get%20a%20**review**%20from%20someone%20else%20on%20your%20team%20to%20give%20a%20%60%2B1%60%0D%0A-%20%5B%20%5D%20If%20you%20have%20**QA**%20on%20your%20team%20and%20they%20plan%20to%20validate%20then%20have%20QA%20label%20%60QA%60%0D%0A-%20%5B%20%5D%20If%20this%20PR%20is%20**time%20sensitive**%20please%20notify%20the%20PR%20Goalie%20in%20the%0D%0A%20%20Hipchat%20%60Integration%20(PE%20Yellow%20Team)%60%20channel%20%0D%0A%0D%0AOnce%20you%20are%20ready%20for%20this%20PR%20to%20be%20tested%20against%20the%20Integration%20pipeline%2C%20add%20a%0D%0Acomment%20saying%0D%0A%0D%0A%60%60%60%0D%0AJenkins%2C%20ready%20for%20testing%0D%0A%60%60%60%0D%0A%0D%0AThis%20will%20kick%20off%20testing%20against%20a%20monolithic%20and%20split%20install%2C%20and%20a%20monolithic%0D%0Aupgrade.%0D%0A%0D%0AOnce%20you%20are%20ready%20for%20the%20Integration%20team%20to%20review%0D%0A-%20%5Bx%5D%20Please%20attach%20the%20%60pending%20integration%20team%20review%60%20**label**%20%0D%0A%0A%0AOpened%20by%3A%20ladyada%0ALink%3A%20https%3A%2F%2Fgithub.com%2Fpuppetlabs%2Fpuppetlabs-puppet_enterprise%2Fpull%2F924%0ACreated%3A%20&idList=57eea7148fe32e8dad010fb6&idMembers=&idLabels=&pos=&due=&idCardSource=&keepFromSource=all
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '2285'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475260977932'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"8XI/BleVVnNX170Sxk7iKg=="
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Date:
+      - Fri, 30 Sep 2016 18:42:57 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA4VW21IbORD9la554uK7uRi/eUkKkiLBgLOpXUxhzahnrKCR
+        ZiWNwZvi37clebDZ3aoUZVujkU6f7nNa4mcieDJOjk8R08GwfzpIj/tpPuCn
+        g94gPzlLWknKeIE2Gf9MVtr5Qa+VrAQ+C1V8wTJF8ztNE0bOpMVWYuvUZkak
+        O1O5LtK6+JvCEFy2xOzpk8MyIm0fz/3I7/KzuixRubiEOcey5faZow9QOaFV
+        Mnampgi8xmSsailfdxDvHAt87x9oUmq7w4jTmytm3SRzYiXcmqgNev2Tdu+s
+        PezN+qPx0WB8fNoZHff/TGJAWjGVyCyCQcbBLRGsw8pCilI/A7NhqjI6Q2th
+        Sc/ZkqkCeWdu5sp/Hr/68j2OwT+0YUbLA9VUvyCtZoqg4gxy0HkOWgXMi0sQ
+        yqHJWYY+zlrXQPWpJDoEpMoEIp2I+h09ktIOUNnaIAgqJBeULrjaKGZ0rXiD
+        bNDraDtwXZs36oIy0R4MNu+BSRmW69pZxxQn4WF6a4HXxg9tRT8OKklx/fPe
+        /R0ifCLKhWFeJJghKyPiOZOoODMPe0vnKjvudjOtclmjyrBT1VWFTrLUdii/
+        LheWMNfdj18vujtohx7tcMoK3N+POc/n9/ZJVJCJ+fwB9kShNCXulpQJFQJb
+        IJzPSiFyqqzTfhaeRPYUqjy9BZLFeeZGFEsH7Jmt9xvRNpoHWcLyN7lJBvM/
+        Oowjp/uXB9jsrWoXyvdZGAaOwqKLGpKRqHEg1yaCOUqMpIaKGfL6Ei3ZQkSl
+        Dg5mwkk8OADsFB1Y7E0/tk9OTvZhwjnc1RUa+BC+vwtqVrfYkphpWKKsoLaA
+        LxVZwTuBEKe3LZIsEKQNwChElJti5EaXYHWJWlFm1DDeMFuKVMFCrMiLsDjs
+        N6HgAT7lIa8lW3nCNxNCerePrONDr4NVPMqKScFZJKTivpsJkAFQwuJm8h46
+        6Eli0ffBgRMl9R9ZXFD/+rJsUiFlRb7eJAgXmgLgpobRgJeior50sNj1J1UT
+        /kDphfXm2l+E3lXEorHBNfkzJEfShANgHWRrOFEu1LveRqQnK5hQNmq+G6US
+        FUqhyI+MRGMednPMgWVr8l8TbLEImX9G9URArd140ag7i/xn5lk8C+rSN1M3
+        jm64MCi10lIQ4SzoQK3lu4LeUXe3wtTuGg9bV8ScY+eXNXifZmOR6Kb/dEM8
+        zMOuRYXxMBH/3h73LkjoYAbSN5Cgv2vaQzVO12PyCV8zzubqSqinMTQHSkEJ
+        1Gk4QbYHys6wHYeP6M9UOros0kspu2eDo7k6jz05hs2p/4E55m8+LPUPQYPX
+        1527pkXTTMjmQfDfNDOby5SfHfUQsxHPzwanLB1mrD/sJX5RuOaksG5zMwl+
+        5XPcPtGrzYXMTvtHoxyHAxxxxnv9Xp6eBIx4775tuVtqQ3uGfjx5uyzP9QpN
+        Q65kqmYyTG1XvF2HcoeBYiXll/gTpn/UHw32oQ2T0Bte7bKWTlCzQbg58csN
+        XNJ93yFWlSaAUf9sQP8CeD7fDFUmaVRxxvdXUCXrHk+vRuc/vs1oV/3rVd1h
+        u8LIpc08kTYRaTdE2iwQKf9qk+qWEG04YmNxXv8BHl3h+d4IAAA=
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 18:42:58 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/members/clippy6?key=d370f9906b4243eed0ed979b6ddb065f&token=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=6692133b04f4eecfaa440b2529261480b78d534af68da38b17129f7d785754f4; Path=/;
+        Expires=Mon, 03 Oct 2016 19:14:11 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475262852038'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      X-Trello-Index-Last-Update:
+      - '3'
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '551'
+      Etag:
+      - W/"227-41ea5400"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:14:12 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"57ed93f4548fc9bb568c2e01","avatarHash":"4fc0c1609c0c48b0950d8ab7747ce50d","bio":"","bioData":null,"confirmed":false,"fullName":"Clippy","idPremOrgsAdmin":null,"initials":"C","memberType":"normal","products":[],"status":"disconnected","url":"https://trello.com/clippy6","username":"clippy6","avatarSource":null,"email":null,"gravatarHash":null,"idBoards":[],"idEnterprise":null,"idOrganizations":[],"loginTypes":null,"oneTimeMessagesDismissed":null,"prefs":null,"trophies":[],"uploadedAvatarHash":null,"premiumFeatures":[],"idBoardsPinned":null}'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:14:12 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130?key=d370f9906b4243eed0ed979b6ddb065f&token=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=a7f1ab378845a63f686568c9613d91b614bd184d82fd5d8d417a3cc4baf50de8; Path=/;
+        Expires=Mon, 03 Oct 2016 19:14:13 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '33'
+      Etag:
+      - W/"21-483a2a6"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:14:13 GMT
+    body:
+      encoding: UTF-8
+      string: unauthorized permission requested
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:14:13 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/members/clippy6?key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=9915595d62091bda90eb0a613545afb026fcf9eeafdb305cbaa791ee75ea87b5; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:09 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263149972'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      X-Trello-Index-Last-Update:
+      - '3'
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '819'
+      Etag:
+      - W/"333-e90d9388"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:19:09 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"57ed93f4548fc9bb568c2e01","avatarHash":"4fc0c1609c0c48b0950d8ab7747ce50d","bio":"","bioData":null,"confirmed":false,"fullName":"Clippy","idPremOrgsAdmin":[],"initials":"C","memberType":"normal","products":[],"status":"disconnected","url":"https://trello.com/clippy6","username":"clippy6","avatarSource":"upload","email":"brandon.high+clippy@puppet.com","gravatarHash":"b800eefce8f9a0199575c17e641cf930","idBoards":["57ed93f4548fc9bb568c2e02","57ed940eec8df927ab3ca130"],"idEnterprise":null,"idOrganizations":[],"loginTypes":["password"],"oneTimeMessagesDismissed":[],"prefs":{"sendSummaries":true,"minutesBetweenSummaries":1,"minutesBeforeDeadlineToNotify":1440,"colorBlind":false,"locale":"en-US"},"trophies":[],"uploadedAvatarHash":"4fc0c1609c0c48b0950d8ab7747ce50d","premiumFeatures":[],"idBoardsPinned":null}'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:10 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130?key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=4e3ee8206ae44130d54d8c7ce6e69b71b9d87e0a8a4b7e33fde82cd4eea9baf3; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:29 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263169639'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      X-Trello-Index-Last-Update:
+      - '37'
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '757'
+      Etag:
+      - W/"2f5-da2e13e2"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:19:29 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"57ed940eec8df927ab3ca130","name":"Test Board","desc":"","descData":null,"closed":false,"idOrganization":null,"pinned":false,"url":"https://trello.com/b/j9F220DB/test-board","shortUrl":"https://trello.com/b/j9F220DB","prefs":{"permissionLevel":"private","voting":"disabled","comments":"members","invitations":"members","selfJoin":false,"cardCovers":true,"cardAging":"regular","calendarFeedEnabled":false,"background":"blue","backgroundImage":null,"backgroundImageScaled":null,"backgroundTile":false,"backgroundBrightness":"dark","backgroundColor":"#0079BF","canBePublic":true,"canBeOrg":true,"canBePrivate":true,"canInvite":true},"labelNames":{"green":"","yellow":"","orange":"","red":"","purple":"","blue":"","sky":"","lime":"","pink":"","black":""}}'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:29 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=c5ceeed03373216ce3ddee8dbbe4217dce618c43473d509c41ba6268f2e0e124; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:30 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263170150'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:19:30 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:30 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=3ff7dc4d3d745300c2f55bd6041027957de3e1c5cf6c9f6cf4de3f2459cdfbe3; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:30 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263170677'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:19:30 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:30 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=d80d68bf8f02a14345b60d85c90a3db0ca8473736bbdee818062f432db5178b8; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:31 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263171200'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:19:31 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:31 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=34d365d556ae2727d8d2895e35ef7dc4fc228cfc0cf828c58cca182bdd8c117a; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:31 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263171743'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:19:31 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:31 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/lists?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=3c913983e304925bb6d1ce29753dec14493c990ad0943cd8de570cd5d93578b1; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:32 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263172278'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '527'
+      Etag:
+      - W/"20f-533d3e40"
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Fri, 30 Sep 2016 19:19:32 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"57eea7148fe32e8dad010fb6","name":"one","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":65535,"subscribed":false},{"id":"57eea71666d29d12d4378c72","name":"two","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":131071,"subscribed":false},{"id":"57eea717fdae153dee430d24","name":"three","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":196607,"subscribed":false},{"id":"57eea71af4e52b5329b29cc9","name":"four","closed":false,"idBoard":"57ed940eec8df927ab3ca130","pos":262143,"subscribed":false}]'
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:32 GMT
+- request:
+    method: get
+    uri: https://api.trello.com/1/boards/57ed940eec8df927ab3ca130/cards?filter=open&key=d370f9906b4243eed0ed979b6ddb065f&token=MEMBER_TOKEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - DENY
+      X-Trello-Version:
+      - 1.766.0
+      X-Trello-Environment:
+      - Production
+      Set-Cookie:
+      - dsc=4a6532877a34fda418a6cf6491ac70b639f56afde76f7e34d42bf2d75148b4e4; Path=/;
+        Expires=Mon, 03 Oct 2016 19:19:32 GMT; Secure
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      X-Server-Time:
+      - '1475263172799'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"e4GRVQjmtaLUQ5VJP3QxuA=="
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Date:
+      - Fri, 30 Sep 2016 19:19:32 GMT
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+        UzZ9jhkAAA==
+    http_version: 
+  recorded_at: Fri, 30 Sep 2016 19:19:32 GMT
+recorded_with: VCR 3.0.3
